@@ -334,10 +334,10 @@ def ing_6():
 # DASHBOARD
 
 
-@tool_bp.route('/resultat')
-@login_required
-def resultat():
-    return send_from_directory(app.config['UPLOAD_FOLDER'], 'pdf/resultat.pdf')
+#@tool_bp.route('/resultat')
+#@login_required
+#def resultat():
+#    return send_from_directory(app.config['UPLOAD_FOLDER'], 'pdf/resultat.pdf')
 
 
 @tool_bp.route('/home')
