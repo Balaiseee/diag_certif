@@ -1,0 +1,63 @@
+#+begin_src plantuml :file diagram_orientation_algorithm.svg
+@startuml
+
+title Algorithme d’orientation vis-à-vis de la certification professionnelle
+
+start
+
+if (SI >=1 prestations) then (non)
+  :INÉLIGIBILITÉ RS ET RNCP;
+  stop
+elseif (SI data-dock) then (non)
+  :INÉLIGIBILITÉ RS ET RNCP;
+  stop
+elseif (SI >=1 cibles) then (non)
+  :INÉLIGIBILITÉ RS ET RNCP;
+  stop
+elseif (SI >=1 besoins) then (non)
+  :INÉLIGIBILITÉ RS ET RNCP;
+  stop
+elseif (SI cibles CONTIENT métier) then (non)
+  if(SI durée >=21heures) then (non)
+    :INÉLIGIBILITÉ RS ET RNCP;
+    stop
+  elseif (SI référentiel d’activités et de compétences) then (non)
+    :INÉLIGIBILITÉ RS ET RNCP;
+    stop
+  else (oui)
+    :ÉLIGIBILITÉ RS;
+    stop
+  endif
+elseif (SI durée >=150 heures) then (non)
+  if(SI durée >=21heures) then (non)
+    :INÉLIGIBILITÉ RS ET RNCP;
+    stop
+  elseif (SI référentiel d’activités et de compétences) then (non)
+    :INÉLIGIBILITÉ RS ET RNCP;
+    stop
+  else (oui)
+    :ÉLIGIBILITÉ RS;
+    stop
+  endif
+elseif(SI >=2 promos) then (non)
+  :INÉLIGIBILITÉ RNCP;
+  stop
+elseif (SI référentiel d’activités et de compétences) then (non)
+  :INÉLIGIBILITÉ RNCP;
+  stop
+elseif (SI VAE) then (non)
+  :INÉLIGIBILITÉ RNCP;
+  stop
+elseif (SI changement coefficient rémunération OU changement poste OU qualification) then (non)
+  :INÉLIGIBILITÉ RNCP;
+  stop
+else (oui)
+  :ÉLIGIBILITÉ RNCP;
+  stop
+endif
+
+@enduml
+#+end_src
+
+#+RESULTS:
+[[file:diagram_orientation_algorithm.svg]]

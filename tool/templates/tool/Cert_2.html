@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block head %}
+    <title>Quelle certification voulez-vous enregistrer ?</title>
+{% endblock %}
+{% block body %}
+    <div align="center">
+        <h1>Que vise votre certification ?</h1>
+        <form action="" method="post">
+            {{ form.hidden_tag() }}
+            <hr>
+            {% for cible in form.cibles %}
+                {{ cible.label }}
+                <br>
+                {{ cible }}
+                <hr>
+            {% endfor %}
+            {% for error in form.cibles.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+            <p>{{ form.submit() }}</p>
+        </form>
+    </div>
+{% endblock %}

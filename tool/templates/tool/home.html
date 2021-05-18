@@ -1,0 +1,378 @@
+{% extends 'layout.html' %}
+
+{% block head %}
+    <title>Home</title>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h2>Organisme</h2>
+                <div class="accordion accordion-flush" id="accordionOrganisme">
+                    <div class="accordion-item">
+                        <h3 class="accordion-header" id="flush-headingOne">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseOne" aria-expanded="false"
+                                    aria-controls="flush-collapseOne">
+                                Nom
+                            </button>
+                        </h3>
+                        <div id="flush-collapseOne" class="accordion-collapse collapse"
+                             aria-labelledby="flush-headingOne"
+                             data-bs-parent="#accordionOrganisme">
+                            <div class="accordion-body">{{ organisme.nom }}</div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h3 class="accordion-header" id="flush-headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseTwo" aria-expanded="false"
+                                    aria-controls="flush-collapseTwo">
+                                Type
+                            </button>
+                        </h3>
+                        <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                             aria-labelledby="flush-headingTwo"
+                             data-bs-parent="#accordionOrganisme">
+                            <div class="accordion-body">{{ organisme.type }}</div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h3 class="accordion-header" id="flush-headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseThree" aria-expanded="false"
+                                    aria-controls="flush-collapseThree">
+                                Date de création
+                            </button>
+                        </h3>
+                        <div id="flush-collapseThree" class="accordion-collapse collapse"
+                             aria-labelledby="flush-headingThree"
+                             data-bs-parent="#accordionOrganisme">
+                            <div class="accordion-body">{{ organisme.date_creation.strftime('%m/%Y') }}</div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h3 class="accordion-header" id="flush-headingFour">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseFour" aria-expanded="false"
+                                    aria-controls="flush-collapseFour">
+                                Numéro de déclaration d'activité
+                            </button>
+                        </h3>
+                        <div id="flush-collapseFour" class="accordion-collapse collapse"
+                             aria-labelledby="flush-headingFour"
+                             data-bs-parent="#accordionOrganisme">
+                            <div class="accordion-body">{{ organisme.numero_declaration_activite }}</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h3 class="accordion-header" id="flush-headingFive">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseFive" aria-expanded="false"
+                                    aria-controls="flush-collapseFive">
+                                Réseau
+                            </button>
+                        </h3>
+                        <div id="flush-collapseFive" class="accordion-collapse collapse"
+                             aria-labelledby="flush-headingFive"
+                             data-bs-parent="#accordionOrganisme">
+                            <div class="accordion-body">{{ organisme.reseau }}</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h3 class="accordion-header" id="flush-headingSix">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseSix" aria-expanded="false"
+                                    aria-controls="flush-collapseSix">
+                                Prestations délivrées
+                            </button>
+                        </h3>
+                        <div id="flush-collapseSix" class="accordion-collapse collapse"
+                             aria-labelledby="flush-headingSix"
+                             data-bs-parent="#accordionOrganisme">
+                            <div class="accordion-body">
+                                {% for prestation in organisme.prestations %}{{ prestation.nom }}<br>{% endfor %}</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h3 class="accordion-header" id="flush-headingSeven">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseSeven" aria-expanded="false"
+                                    aria-controls="flush-collapseSeven">
+                                Certification enregistrée
+                            </button>
+                        </h3>
+                        <div id="flush-collapseSeven" class="accordion-collapse collapse"
+                             aria-labelledby="flush-headingSeven"
+                             data-bs-parent="#accordionOrganisme">
+                            <div class="accordion-body">
+                                {% if organisme.certification_existence %}
+                                    {{ organisme.certification_enregistree.nom }}<br>
+                                    {{ organisme.certification_enregistree.numero_fiche }}<br>
+                                    {{ organisme.certification_enregistree.nomenclature }}<br>
+                                    {{ organisme.certification_enregistree.date_echeance }}
+                                {% else %}
+                                    Pas de certification enregistrée
+                                {% endif %}
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h3 class="accordion-header" id="flush-headingEight">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseEight" aria-expanded="false"
+                                    aria-controls="flush-collapseEight">
+                                Référence
+                            </button>
+                        </h3>
+                        <div id="flush-collapseEight" class="accordion-collapse collapse"
+                             aria-labelledby="flush-headingEight"
+                             data-bs-parent="#accordionOrganisme">
+                            <div class="accordion-body">
+                                {% for reference in organisme.references %}{{ reference.nom }}<br>{% endfor %}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <h2>Certification</h2>
+                <div class="accordion accordion-flush" id="accordionCertification">
+                    <div class="accordion-item">
+                        <h3 class="accordion-header" id="flush-heading-certificationOne">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapse-certificationOne" aria-expanded="false"
+                                    aria-controls="flush-collapse-certificationOne">
+                                Intitulé de la certification
+                            </button>
+                        </h3>
+                        <div id="flush-collapse-certificationOne" class="accordion-collapse collapse"
+                             aria-labelledby="flush-heading-certificationOne"
+                             data-bs-parent="#accordionCertification">
+                            <div class="accordion-body">{{ organisme.certification.nom }}</div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h3 class="accordion-header" id="flush-heading-certificationTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapse-certificationTwo" aria-expanded="false"
+                                    aria-controls="flush-collapse-certificationTwo">
+                                Objectifs
+                            </button>
+                        </h3>
+                        <div id="flush-collapse-certificationTwo" class="accordion-collapse collapse"
+                             aria-labelledby="flush-heading-certificationTwo"
+                             data-bs-parent="#accordionCertification">
+                            <div class="accordion-body">{% for cible in organisme.certification.cibles %}{{ cible.nom }}<br>{% endfor %}</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h3 class="accordion-header" id="flush-heading-certificationThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapse-certificationThree" aria-expanded="false"
+                                    aria-controls="flush-collapse-certificationThree">
+                                Date de création
+                            </button>
+                        </h3>
+                        <div id="flush-collapse-certificationThree" class="accordion-collapse collapse"
+                             aria-labelledby="flush-heading-certificationThree"
+                             data-bs-parent="#accordionCertification">
+                            <div class="accordion-body">{{ organisme.certification.date_creation.strftime('%m/%Y') }}</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h3 class="accordion-header" id="flush-heading-certificationFour">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapse-certificationFour" aria-expanded="false"
+                                    aria-controls="flush-collapse-certificationFour">
+                                Besoins
+                            </button>
+                        </h3>
+                        <div id="flush-collapse-certificationFour" class="accordion-collapse collapse"
+                             aria-labelledby="flush-heading-certificationFour"
+                             data-bs-parent="#accordionCertification">
+                            <div class="accordion-body">{{ organisme.certification.besoin_employeur }}
+                                {{ organisme.certification.besoin_branche_professionnelle }}
+                                {{ organisme.certification.besoin_reglementation }}
+                                {{ organisme.certification.besoin_institutions_publiques }}
+                                {{ organisme.certification.besoin_autre }}</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h3 class="accordion-header" id="flush-heading-certificationFive">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapse-certificationFive" aria-expanded="false"
+                                    aria-controls="flush-collapse-certificationFive">
+                                Etude réalisée
+                            </button>
+                        </h3>
+                        <div id="flush-collapse-certificationFive" class="accordion-collapse collapse"
+                             aria-labelledby="flush-heading-certificationFive"
+                             data-bs-parent="#accordionCertification">
+                            <div class="accordion-body">{{ organisme.certification.etude_realisee }}</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h3 class="accordion-header" id="flush-heading-certificationSix">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapse-certificationSix" aria-expanded="false"
+                                    aria-controls="flush-collapse-certificationSix">
+                                Durée de la formation (en heure)
+                            </button>
+                        </h3>
+                        <div id="flush-collapse-certificationSix" class="accordion-collapse collapse"
+                             aria-labelledby="flush-heading-certificationSix"
+                             data-bs-parent="#accordionCertification">
+                            <div class="accordion-body">
+                                {{ organisme.certification.duree.description }}</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h3 class="accordion-header" id="flush-heading-certificationSeven">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapse-certificationSeven" aria-expanded="false"
+                                    aria-controls="flush-collapse-certificationSeven">
+                                Promotions ayant été réalisées
+                            </button>
+                        </h3>
+                        <div id="flush-collapse-certificationSeven" class="accordion-collapse collapse"
+                             aria-labelledby="flush-heading-certificationSeven"
+                             data-bs-parent="#accordionCertification">
+                            <div class="accordion-body">
+                                {{ organisme.certification.promotions }}
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h3 class="accordion-header" id="flush-heading-certificationEight">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapse-certificationEight" aria-expanded="false"
+                                    aria-controls="flush-collapse-certificationEight">
+                                Stagiaires ayant obtenu la certification
+                            </button>
+                        </h3>
+                        <div id="flush-collapse-certificationEight" class="accordion-collapse collapse"
+                             aria-labelledby="flush-heading-certificationEight"
+                             data-bs-parent="#accordionCertification">
+                            <div class="accordion-body">
+                                {{ organisme.certification.stagiaires }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <h2>Ingénierie</h2>
+                <div class="accordion accordion-flush" id="accordionIngenierieCertification">
+                    <div class="accordion-item">
+                        <h3 class="accordion-header" id="flush-heading-ingenierieCertificationOne">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapse-ingenierieCertificationOne" aria-expanded="false"
+                                    aria-controls="flush-collapse-ingenierieCertificationOne">
+                                Programme de formation
+                            </button>
+                        </h3>
+                        <div id="flush-collapse-ingenierieCertificationOne" class="accordion-collapse collapse"
+                             aria-labelledby="flush-heading-ingenierieCertificationOne"
+                             data-bs-parent="#accordionIngenierieCertification">
+                            <div class="accordion-body">{{ organisme.ingenierie.programme_formation }}</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h3 class="accordion-header" id="flush-heading-ingenierieCertificationTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapse-ingenierieCertificationTwo" aria-expanded="false"
+                                    aria-controls="flush-collapse-ingenierieCertificationTwo">
+                                Référentiel d'activités / compétences
+                            </button>
+                        </h3>
+                        <div id="flush-collapse-ingenierieCertificationTwo" class="accordion-collapse collapse"
+                             aria-labelledby="flush-heading-ingenierieCertificationTwo"
+                             data-bs-parent="#accordionIngenierieCertification">
+                            <div class="accordion-body">{{ organisme.ingenierie.refenrentiel_activites_competences }}<br>
+                            {{ organisme.ingenierie.blocs_competences }}<br>
+                            {{ organisme.ingenierie.nombre_blocs }}</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h3 class="accordion-header" id="flush-heading-ingenierieCertificationThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapse-ingenierieCertificationThree" aria-expanded="false"
+                                    aria-controls="flush-collapse-ingenierieCertificationThree">
+                                Référentiel d'évaluation / certification
+                            </button>
+                        </h3>
+                        <div id="flush-collapse-ingenierieCertificationThree" class="accordion-collapse collapse"
+                             aria-labelledby="flush-heading-ingenierieCertificationThree"
+                             data-bs-parent="#accordionIngenierieCertification">
+                            <div class="accordion-body">
+                                {{ organisme.ingenierie.modalites_evaluation }}<br>
+                                {{ organisme.ingenierie.criteres_evaluation }}<br>
+                                {% for eval in organisme.ingenierie.evaluateurs %}{{ eval.nom }}<br>{% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h3 class="accordion-header" id="flush-heading-ingenierieCertificationFour">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapse-ingenierieCertificationFour" aria-expanded="false"
+                                    aria-controls="flush-collapse-ingenierieCertificationFour">
+                                VAE
+                            </button>
+                        </h3>
+                        <div id="flush-collapse-ingenierieCertificationFour" class="accordion-collapse collapse"
+                             aria-labelledby="flush-heading-ingenierieCertificationFour"
+                             data-bs-parent="#accordionIngenierieCertification">
+                            <div class="accordion-body">
+                                {{ organisme.ingenierie.vae }}<br>
+                                {{ organisme.ingenierie.candidats_vae }}<br>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h3 class="accordion-header" id="flush-heading-ingenierieCertificationFive">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapse-ingenierieCertificationFive" aria-expanded="false"
+                                    aria-controls="flush-collapse-ingenierieCertificationFive">
+                                Evolution possible
+                            </button>
+                        </h3>
+                        <div id="flush-collapse-ingenierieCertificationFive" class="accordion-collapse collapse"
+                             aria-labelledby="flush-heading-ingenierieCertificationFive"
+                             data-bs-parent="#accordionIngenierieCertification">
+                            <div class="accordion-body">
+                                {{ organisme.ingenierie.ccn }}<br>
+                                {{ organisme.ingenierie.changement_poste }}<br>
+                                {{ organisme.ingenierie.changement_coefficient_remuneration }}<br>
+                                {{ organisme.ingenierie.qualification }}<br>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h3 class="accordion-header" id="flush-heading-ingenierieCertificationSix">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapse-ingenierieCertificationSix" aria-expanded="false"
+                                    aria-controls="flush-collapse-ingenierieCertificationSix">
+                                Comparaison avec d'autres certifications
+                            </button>
+                        </h3>
+                        <div id="flush-collapse-ingenierieCertificationSix" class="accordion-collapse collapse"
+                             aria-labelledby="flush-heading-ingenierieCertificationSix"
+                             data-bs-parent="#accordionIngenierieCertification">
+                            <div class="accordion-body">
+                                {{ organisme.ingenierie.reconnaissance_certification_rs }}<br>
+                                {{ organisme.ingenierie.reconnaissance_certification_rncp }}<br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

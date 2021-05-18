@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+{% block head %}
+    <title>Votre ingénierie de formation ?</title>
+{% endblock %}
+{% block body %}
+    <div align="center">
+        <h1>Avez-vous un référentiel d'activités / compétences ?</h1>
+        <form action="" method="post">
+            {{ form.hidden_tag() }}
+            <p>
+                {{ form.refenrentiel_activites_competences.label }}<br>
+                {{ form.refenrentiel_activites_competences }}<br>
+                {% for error in form.refenrentiel_activites_competences.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.blocs_competences.label }}<br>
+                {{ form.blocs_competences }}<br>
+                {% for error in form.blocs_competences.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.nombre_blocs.label }}<br>
+                {{ form.nombre_blocs }}<br>
+                {% for error in form.nombre_blocs.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>{{ form.submit() }}</p>
+        </form>
+    </div>
+{% endblock %}

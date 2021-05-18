@@ -1,0 +1,50 @@
+{% extends 'layout.html' %}
+
+{% block head %}
+    <title>Home</title>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                {% if rncp %}
+                    <p>Sans préjuger de l’enregistrement de votre certification au RNCP qui relève des prérogatives
+                        exclusives de France Compétences, il semblerait que votre dossier est avancé. D’autant plus, que
+                        vous semblez déjà disposer d’une expérience d’enregistrement, avec une certification déjà
+                        enregistrée à votre actif.
+                        Cependant, ce retour est fondé sur la complétude des éléments attendus et non sur leur qualité.
+
+                        Une incertitude subsiste néanmoins sur la nature de l’activité ou du métier que vous visez,
+                        avez-vous tous les arguments pour démonter qu’il s’agit bien d’un nouveau métier et non d’une
+                        spécialisation du métier de gestionnaire de patrimoine? Si une telle argumentation ne peut être
+                        développée, votre certification relèverait davantage du RS.</p>
+                {% endif %}
+                {% if rs and not rncp %}
+                    <p>Sans préjuger de l’enregistrement de votre certification au RS qui relève des prérogatives
+                        exclusives de France Compétences, il semblerait que vous puissiez prétendre à un enregistrement
+                        au RS.
+                        Pour être déposé au RNCP, il faudrait démontrer que votre certification vise un métier à part
+                        entière.
+                    </p>
+                {% endif %}
+                {% if not rs and not rncp %}
+                    <p>Le dossier que vous proposez n’est pas arrivé à maturité.
+
+                        Il ne semble pas remplir les exigences et conditions pour relever d’un enregistrement aux
+                        Répertoires nationaux de France Compétences. L’incomplétude des éléments d’ingénierie de
+                        certification est rédhibitoire dans le dépôt d’un dossier. Notamment, l’absence de référentiel
+                        d’activités / compétences et de référentiel d’évaluation qui constituent des objets
+                        incontournables y compris en termes de qualité.
+
+                        Cependant, votre organisme est tout nouvellement créer et c’est l’occasion de démarrer sur des
+                        bases solides pour élaborer une certification en vous appuyant sur les notices de France
+                        Compétences.
+
+                        Nous restons à votre écoute, si vous le jugez utile pour votre apporter des conseils et/ou un
+                        accompagnement dans cette démarche.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

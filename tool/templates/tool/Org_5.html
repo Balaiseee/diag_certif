@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block head %}
+    <title>Parlez-nous de vous ?</title>
+{% endblock %}
+{% block body %}
+    <div align="center">
+        <h1>Votre organisme détient-il déjà une certification enregistrée ?</h1>
+        <form action="" method="post">
+            {{ form.hidden_tag() }}
+            <p>{{ form.certification_enregistree }}<br></p>
+            <p id="form">
+                {{ form.certification_nom }}<br><br>
+                {{ form.certification_numero_fiche }}<br><br>
+                {{ form.certification_nomenclature }}<br><br>
+                {{ form.certification_date_echeance }}<br>
+                {% for error in form.certification_enregistree.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>{{ form.submit() }}</p>
+        </form>
+    </div>
+            <script>
+        var checkbox = document.getElementById('certification_enregistree')
+        var form = document.getElementById("form");
+        form.style.display = "none";
+        checkbox.onclick = function () {
+            if (this.checked)
+                form.style.display = "block";
+        };
+    </script>
+{% endblock %}

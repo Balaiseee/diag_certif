@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+{% block head %}
+    <title>Quelle certification voulez-vous enregistrer ?</title>
+{% endblock %}
+{% block body %}
+    <div align="center">
+        <h1>Avez-vous identifié les besoins de cette certification ?</h1>
+        <form action="" method="post">
+            {{ form.hidden_tag() }}
+            {{ form.besoin_employeur.label }}
+            <br>
+            {{ form.besoin_employeur_existence }}
+            {{ form.besoin_employeur }}
+            <hr>
+            {{ form.besoin_branche_professionnelle.label }}
+            <br>
+            {{ form.besoin_branche_professionnelle_existence }}
+            {{ form.besoin_branche_professionnelle }}
+            <hr>
+            {{ form.besoin_reglementation.label }}
+            <br>
+            {{ form.besoin_reglementation_existence }}
+            {{ form.besoin_reglementation }}
+            <hr>
+            {{ form.besoin_institutions_publiques.label }}
+            <br>
+            {{ form.besoin_institutions_publiques_existence }}
+            {{ form.besoin_institutions_publiques }}
+            <hr>
+            {{ form.besoin_autre.label }}
+            <br>
+            {{ form.besoin_autre_existence }}
+            {{ form.besoin_autre }}
+            <hr>
+            <p>{{ form.submit() }}</p>
+        </form>
+    </div>
+    <script>
+        function s(c, f) {
+            var checkbox = document.getElementById(c)
+            var form = document.getElementById(f);
+            form.style.display = "none";
+            checkbox.onclick = function () {
+                if (this.checked)
+                    form.style.display = "block";
+                else
+                    form.style.display = "none";
+            }
+        }
+        s('besoin_employeur_existence','besoin_employeur')
+        s('besoin_branche_professionnelle_existence','besoin_branche_professionnelle')
+        s('besoin_reglementation_existence','besoin_reglementation')
+        s('besoin_institutions_publiques_existence','besoin_institutions_publiques')
+        s('besoin_autre_existence','besoin_autre')
+    </script>
+{% endblock %}

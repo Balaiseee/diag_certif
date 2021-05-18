@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block head %}
+    <title>Votre ingénierie de formation ?</title>
+{% endblock %}
+{% block body %}
+    <div align="center">
+        <h1>Votre certification est-elle accessible par la voie de la VAE ?</h1>
+        <form action="" method="post">
+            {{ form.hidden_tag() }}
+            <p>
+                {{ form.vae.label }}<br>
+                {{ form.vae }}<br>
+                {% for error in form.vae.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.candidats_vae.label }}<br>
+                {{ form.candidats_vae }}<br>
+                {% for error in form.candidats_vae.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>{{ form.submit() }}</p>
+        </form>
+    </div>
+{% endblock %}

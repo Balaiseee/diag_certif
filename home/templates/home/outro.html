@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+
+{% block head %}
+    <title>DiagCertif</title>
+{% endblock %}
+{% block body %}
+    <h1>Décision</h1>
+    <br>
+    <p class="lead">Il va de soi que le résultat de cette étude ne préjuge en rien de l’analyse que pourrait en
+        effectuer France Compétences. Toutefois, il vous permet de vérifier l’existence formelle ou non des éléments et
+        documents à soumettre lors de votre demande. La qualité de leur contenu relève exclusivement de l’appréciation
+        de France Compétences. Si vous en estimez le besoin, EssKa Consultants est à votre écoute pour tout
+        accompagnement ou conseil.</p>
+    <hr>
+    <p class="lead">
+        <a class="btn btn-primary btn-lg" href="{{ url_for('tool_bp.resultat') }}" role="button">Connaître mon
+            éligilibté</a>
+    </p>
+{% endblock %}
