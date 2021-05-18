@@ -2,7 +2,7 @@
 
 ## Un outil de diagnostic de faisabilité sur la certification professionnelle
 
-DiagCertif est un outil d'aide à la décision commandé par EssKa Consultants à MAISON MÈRE. Il est réalisé en Python avec le framework [Flask](https://github.com/pallets/flask).
+DiagCertif est un outil d'aide à la décision commandé par EssKa Consultants à MAISON MÈRE. Il est réalisé en Python avec le framework [Flask](https://github.com/pallets/flask) et déployé avec [Dokku](https://github.com/dokku/dokku).
 
 ### Diagramme de l'algorithme d'orientation
 
